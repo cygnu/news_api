@@ -12,7 +12,8 @@ class ArticleModel extends ChangeNotifier {
   List<Article> articlesList = [];
 
   Future<List<Article>> getArticles() async {
-    http.Response response = await http.get('$NewsAPIURL&apiKey=$apiKey');
+    Uri uri = '$NewsAPIURL&apiKey=$apiKey' as Uri;
+    http.Response response = await http.get(uri);
 
     if (response.statusCode != 200) {
       print(response.statusCode);
@@ -26,4 +27,3 @@ class ArticleModel extends ChangeNotifier {
     return articlesList;
   }
 }
-
