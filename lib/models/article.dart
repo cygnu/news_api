@@ -1,15 +1,15 @@
 class Article {
-  String author;
-  String title;
-  String description;
-  String url;
-  String imageUrl;
+  String? author;
+  late String title;
+  late String description;
+  late String url;
+  String? imageUrl;
 
   Article({
     this.author,
-    this.title,
-    this.description,
-    this.url,
+    required this.title,
+    required this.description,
+    required this.url,
     this.imageUrl,
   });
 
