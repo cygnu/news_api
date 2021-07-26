@@ -1,38 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/models/article_model.dart';
+import 'package:news_app/screens/overview_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(NewsApp());
 
 class NewsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('News App'),
-      ),
-      body: Container(
-        child: Text('Hello World'),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<ArticleModel>(
+          create: (_) => ArticleModel(),
+        ),
+      ],
+      child: MaterialApp(
+        initialRoute: '/',
+        routes: {
+          '/': (context) => OverviewScreen(),
+          OverviewScreen.route: (context) => OverviewScreen(),
+        },
       ),
     );
   }
