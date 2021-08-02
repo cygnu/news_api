@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/models/article.dart';
 
 class DetailsScreen extends StatelessWidget {
   static const route = 'details_screen';
