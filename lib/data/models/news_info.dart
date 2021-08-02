@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:news_app/models/news_article.dart';
+import 'package:news_app/data/models/news_article.dart';
 
 part 'news_info.freezed.dart';
 part 'news_info.g.dart';
