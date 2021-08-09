@@ -6,14 +6,11 @@ class OverviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Expanded(
-            child: ArticleListView(),
-          ),
-        ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('News App'),
       ),
+      body: ArticleListView(),
     );
   }
 }
