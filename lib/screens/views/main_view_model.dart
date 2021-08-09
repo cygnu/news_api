@@ -7,7 +7,7 @@ class MainViewModel extends ChangeNotifier {
   late String apiKey;
 
   final api = ApiClient.create();
-  List<NewsInfo> _news = List();
+  List<NewsInfo> _news = [];
   List<NewsInfo> get news => _news;
 
   Future<void> getNews() async {
