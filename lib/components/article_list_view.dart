@@ -1,26 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/screens/views/main_view_model.dart';
 import 'package:provider/provider.dart';
 
 class ArticleListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final articleModel = Provider.of<ArticleModel>(context);
-    articleModel.getArticles();
-
-    return StreamBuilder(
-      stream: articleModel.getArticles().asStream(),
-      builder: (BuildContext context, AsyncSnapshot<List<Article>> snapshot) {
-        if (snapshot.hasData) {
-          return ListView.builder(
-            itemCount: (snapshot.data)!.length,
-            itemBuilder: (BuildContext context, int index) {
-              return ListTile();
-            },
-          );
-        }
-
-        return Center(
-          child: CircularProgressIndicator(),
+    final articleModel = Provider.of<MainViewModel>(context);
+    articleModel.getNews();
+    return Consumer<MainViewModel>(
+      builder: (BuildContext context, model, Widget? child) {
+        return ListView.builder(
+          itemCount: model.news.length,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile();
+          },
         );
       },
     );
