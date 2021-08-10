@@ -6,7 +6,7 @@ import 'package:news_app/screens/views/main_view_model.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
-  await DotEnv().load(fileName: '.env');
+  await dotenv.load(fileName: '.env');
   runApp(NewsApp());
 }
 
