@@ -7,7 +7,7 @@ class NewsListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final articleModel = Provider.of<MainViewModel>(context);
-    articleModel.getNews();
+    articleModel.getNews("us", "657ad8xxxxxx");
     return Consumer<MainViewModel>(
       builder: (BuildContext context, model, Widget? child) {
         return ListView.builder(
