@@ -3,7 +3,7 @@ import 'package:news_app/components/news_item.dart';
 import 'package:news_app/screens/views/main_view_model.dart';
 import 'package:provider/provider.dart';
 
-class ArticleListView extends StatelessWidget {
+class NewsListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final articleModel = Provider.of<MainViewModel>(context);
