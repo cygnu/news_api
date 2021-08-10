@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:news_app/screens/details_screen.dart';
 import 'package:news_app/screens/overview_screen.dart';
 import 'package:news_app/screens/views/main_view_model.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(NewsApp());
+void main() async {
+  await DotEnv().load(fileName: '.env');
+  runApp(NewsApp());
+}
 
 class NewsApp extends StatelessWidget {
   @override
