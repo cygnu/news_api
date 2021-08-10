@@ -10,7 +10,7 @@ class MainViewModel extends ChangeNotifier {
   List<NewsInfo> _news = [];
   List<NewsInfo> get news => _news;
 
-  Future<void> getNews() async {
+  Future<void> getNews(country, apiKey) async {
     _news = await api.getHeadlineNews(country, apiKey);
     notifyListeners();
   }
