@@ -9,7 +9,7 @@ part 'news_info.g.dart';
 class NewsInfo with _$NewsInfo {
   const factory NewsInfo({
     required String totalResults,
-    required NewsArticle article,
+    required List<NewsArticle> article,
   }) = _NewsInfo;
 
   factory NewsInfo.fromJson(Map<String, dynamic> json) =>
