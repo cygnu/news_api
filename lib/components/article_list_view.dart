@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/data/models/news_info.dart';
+import 'package:news_app/components/news_item.dart';
 import 'package:news_app/screens/views/main_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -17,21 +17,6 @@ class ArticleListView extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-}
-
-class NewsItem extends StatelessWidget {
-  NewsItem({
-    required this.newsInfo,
-  });
-
-  final NewsInfo newsInfo;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: Image.network(newsInfo.article.urlToImage!),
     );
   }
 }
