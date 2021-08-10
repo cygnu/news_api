@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 class DetailsScreen extends StatelessWidget {
   static const route = 'details_screen';
 
-  late final Article article;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(article.title),
+        title: Text('details'),
       ),
       body: Container(),
     );
