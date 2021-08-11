@@ -11,7 +11,7 @@ class NewsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Image.network(newsInfo.article.urlToImage!),
+      child: Image.network(newsInfo.articles.urlToImage!),
     );
   }
 }
