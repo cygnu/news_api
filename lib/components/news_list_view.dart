@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:news_app/components/news_item.dart';
+import 'package:news_app/data/models/news_article.dart';
 import 'package:news_app/screens/views/main_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -9,12 +10,19 @@ class NewsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     final articleModel = Provider.of<MainViewModel>(context);
     articleModel.getNews("us", dotenv.env["API_KEY"]);
+
     return Consumer<MainViewModel>(
       builder: (BuildContext context, model, Widget? child) {
+        List<NewsArticle> articles = [];
+
+        for (int i = 0; i < model.news.length; i++) {
+          articles.addAll(model.news[i].articles);
+        }
+
         return ListView.builder(
-          itemCount: model.news.length,
+          itemCount: articles.length,
           itemBuilder: (BuildContext context, int index) => NewsItem(
-            newsInfo: model.news[index],
+            article: articles[index],
           ),
         );
       },

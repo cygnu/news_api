@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/data/models/news_info.dart';
+import 'package:news_app/data/models/news_article.dart';
 
 class NewsItem extends StatelessWidget {
   NewsItem({
-    required this.newsInfo,
+    required this.article,
   });
 
-  final NewsInfo newsInfo;
+  final NewsArticle article;
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Image.network(newsInfo.articles.urlToImage!),
+      child: Image.network(article.urlToImage!),
     );
   }
 }
