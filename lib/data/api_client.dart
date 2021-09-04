@@ -9,4 +9,7 @@ Future<List<NewsInfo>> getHeadlineNews({
   required String apiKey,
 }) async {
   Response response = await _dio.get("baseUrl?country=$country&apiKey=$apiKey");
+
+  List<NewsInfo> info = NewsInfo.fromJson(response.data) as List<NewsInfo>;
+  return info;
 }
