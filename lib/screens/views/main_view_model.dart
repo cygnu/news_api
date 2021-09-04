@@ -6,12 +6,11 @@ class MainViewModel extends ChangeNotifier {
   late String country;
   late String apiKey;
 
-  final api = ApiClient.create();
   List<NewsInfo> _news = [];
   List<NewsInfo> get news => _news;
 
   Future<void> getNews(country, apiKey) async {
-    _news = await api.getHeadlineNews(country, apiKey);
+    _news = await getHeadlineNews(country, apiKey);
     notifyListeners();
   }
 }
