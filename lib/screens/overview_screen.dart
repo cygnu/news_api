@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/components/news_list_view.dart';
+import 'package:news_api/components/news_list_view.dart';
 
 class OverviewScreen extends StatelessWidget {
   static const route = 'overview_screen';

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:news_app/data/api_client.dart';
-import 'package:news_app/data/models/news_info.dart';
+import 'package:news_api/data/api_client.dart';
+import 'package:news_api/data/models/news_info.dart';
 
 class MainViewModel extends ChangeNotifier {
   late String country;

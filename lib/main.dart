@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:news_app/screens/details_screen.dart';
-import 'package:news_app/screens/overview_screen.dart';
-import 'package:news_app/screens/views/main_view_model.dart';
+import 'package:news_api/screens/details_screen.dart';
+import 'package:news_api/screens/overview_screen.dart';
+import 'package:news_api/screens/views/main_view_model.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   await dotenv.load(fileName: '.env');
-  runApp(NewsApp());
+  runApp(newsApi());
 }
 
-class NewsApp extends StatelessWidget {
+class newsApi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(

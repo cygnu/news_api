@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:news_app/components/news_item.dart';
-import 'package:news_app/data/models/news_article.dart';
-import 'package:news_app/screens/views/main_view_model.dart';
+import 'package:news_api/components/news_item.dart';
+import 'package:news_api/data/models/news_article.dart';
+import 'package:news_api/screens/views/main_view_model.dart';
 import 'package:provider/provider.dart';
 
 class NewsListView extends StatelessWidget {

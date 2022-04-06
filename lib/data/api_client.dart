@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:news_app/data/models/news_info.dart';
+import 'package:news_api/data/models/news_info.dart';
 
 final _dio = new Dio();
 final baseUrl = "https://newsapi.org/v2/top-headlines";
