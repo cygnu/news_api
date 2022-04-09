@@ -1,12 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:news_api/data/models/news_info.dart';
+import 'package:retrofit/http.dart';
 
-final _dio = new Dio();
-final baseUrl = "https://newsapi.org/v2/top-headlines";
+part 'api_client.g.dart';
 
-Future<List<NewsInfo>> getHeadlineNews(String country, String apiKey) async {
-  Response response = await _dio.get("baseUrl?country=$country&apiKey=$apiKey");
+@RestApi(baseUrl: "https://newsapi.org/v2/top-headlines")
+abstract class ApiClient {
+  factory ApiClient(Dio dio, {String baseUrl}) = _ApiClient;
 
-  List<NewsInfo> info = NewsInfo.fromJson(response.data) as List<NewsInfo>;
-  return info;
+  @GET("?country={country}&apiKey={apiKey}")
+  Future<List<NewsInfo>> fetchNews(
+      @Path("country") String country, @Path("apiKey") int apiKey);
 }
