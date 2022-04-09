@@ -1,20 +1,27 @@
-import 'package:flutter/foundation.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-part 'news_article.freezed.dart';
 part 'news_article.g.dart';
 
-@freezed
-class NewsArticle with _$NewsArticle {
-  const factory NewsArticle({
-    String? author,
-    required String title,
-    required String description,
-    required String url,
-    String? urlToImage,
-    required String publishAt,
-  }) = _NewsArticle;
+@JsonSerializable()
+class NewsArticle {
+  String? author;
+  String title;
+  String description;
+  String url;
+  String? urlToImage;
+  String publishAt;
+
+  NewsArticle({
+    this.author,
+    required this.title,
+    required this.description,
+    required this.url,
+    this.urlToImage,
+    required this.publishAt,
+  });
 
   factory NewsArticle.fromJson(Map<String, dynamic> json) =>
       _$NewsArticleFromJson(json);
+
+  Map<String, dynamic> toJson() => _$NewsArticleToJson(this);
 }
