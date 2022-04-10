@@ -1,15 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:news_api/data/models/news_info.dart';
+import 'package:news_api/data/repository/news_repository.dart';
 
 class MainViewModel extends ChangeNotifier {
+  final NewsRepository repository = NewsRepositoryImpl();
+  late List<NewsInfo> news;
   late String country;
   late String apiKey;
 
-  List<NewsInfo> _news = [];
-  List<NewsInfo> get news => _news;
+  MainViewModel() {
+    this.news = [];
+    fetchNews(country, apiKey);
+  }
 
-  Future<void> getNews(country, apiKey) async {
-    _news = await getHeadlineNews(country, apiKey);
-    notifyListeners();
+  Future<void> fetchNews(country, apiKey) async {
+    await repository.fetchNews(country, apiKey).then((result) {
+      result.when(success: (news) {
+        notifyListeners();
+      }, failure: (error) {
+        print(error.message);
+      });
+    });
   }
 }
