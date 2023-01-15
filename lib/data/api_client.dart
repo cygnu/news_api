@@ -1,12 +1,15 @@
-import 'package:dio/dio.dart';
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
 import 'package:news_api/data/models/news_info.dart';
 
-final _dio = new Dio();
 final baseUrl = "https://newsapi.org/v2/top-headlines";
 
 Future<List<NewsInfo>> getHeadlineNews(String country, String apiKey) async {
-  Response response = await _dio.get("baseUrl?country=$country&apiKey=$apiKey");
+  final response =
+      await http.get(Uri.https("baseUrl?country=$country&apiKey=$apiKey"));
 
-  List<NewsInfo> info = NewsInfo.fromJson(response.data) as List<NewsInfo>;
+  List<NewsInfo> info =
+      NewsInfo.fromJson(jsonDecode(response.body)) as List<NewsInfo>;
   return info;
 }
