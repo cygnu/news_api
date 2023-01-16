@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:news_api/components/news_item.dart';
 import 'package:news_api/data/models/news_article.dart';
+import 'package:news_api/data/models/news_info.dart';
 import 'package:news_api/screens/views/main_view_model.dart';
-import 'package:provider/provider.dart';
 
-class NewsListView extends StatelessWidget {
+final viewProvider =
+    StateNotifierProvider<MainViewNotifier, List<NewsInfo>>((ref) {
+  return MainViewNotifier();
+});
+
+class NewsListView extends HookConsumerWidget {
+  const NewsListView({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
-    final articleModel = Provider.of<MainViewModel>(context);
-    articleModel.getNews("us", dotenv.env["API_KEY"]);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final articleNotifier = ref.watch(viewProvider.notifier);
+    articleNotifier.getNews("us", dotenv.env["API_KEY"]);
 
-    return Consumer<MainViewModel>(
-      builder: (BuildContext context, model, Widget? child) {
+    return Consumer(
+      builder: (BuildContext context, model, _) {
         List<NewsArticle> articles = [];
 
-        for (int i = 0; i < model.news.length; i++) {
-          articles.addAll(model.news[i].articles);
+        for (int i = 0; i < articles.length; i++) {
+          articles.addAll(articles);
         }
 
         return ListView.builder(
