@@ -6,7 +6,7 @@ abstract class ApiRepository {
 }
 
 class ApiRepositoryImpl implements ApiRepository {
-  ApiRepositoryImpl(this._apiClient);
+  ApiRepositoryImpl({required ApiClient apiClient}) : _apiClient = apiClient;
 
   final ApiClient _apiClient;
 

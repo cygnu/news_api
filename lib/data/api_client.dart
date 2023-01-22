@@ -1,7 +1,12 @@
 import 'dart:convert';
 
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
 import 'package:news_api/data/models/news_info.dart';
+
+final apiClientProvider = Provider.autoDispose(
+  (_) => ApiClient(),
+);
 
 class ApiClient {
   final baseUrl = "https://newsapi.org/v2/top-headlines";
