@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_api/components/news_list_view.dart';
+import 'package:news_api/components/news_page_body.dart';
 
 class OverviewScreen extends StatelessWidget {
   static const route = 'overview_screen';
@@ -10,7 +10,7 @@ class OverviewScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('News App'),
       ),
-      body: NewsListView(),
+      body: NewsPageBody(),
     );
   }
 }
