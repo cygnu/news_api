@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:news_api/components/news_item.dart';
+import 'package:news_api/data/models/news_article.dart';
 import 'package:news_api/data/models/news_info.dart';
 
 class NewsList extends StatelessWidget {
@@ -8,6 +10,19 @@ class NewsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        (BuildContext context, int index) {
+          List<NewsArticle> articles = [];
+
+          for (int i = 0; i < data.length; i++) {
+            articles.addAll(data[index].articles);
+          }
+
+          return NewsItem(article: articles[index]);
+        },
+        childCount: data.length,
+      ),
+    );
   }
 }
