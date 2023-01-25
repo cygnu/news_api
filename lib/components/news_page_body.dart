@@ -22,21 +22,15 @@ class NewsPageBody extends HookConsumerWidget {
             error: (Object error, StackTrace stackTrace) {
               return SliverPadding(
                 padding: EdgeInsets.all(16.0),
-                sliver: SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      return Container(
-                        child: Text('Error.'),
-                      );
-                    },
-                  ),
+                sliver: SliverToBoxAdapter(
+                  child: Text("Error."),
                 ),
               );
             },
             loading: () {
               return SliverPadding(
                 padding: EdgeInsets.all(16.0),
-                sliver: Center(
+                sliver: SliverToBoxAdapter(
                   child: CupertinoActivityIndicator(),
                 ),
               );
