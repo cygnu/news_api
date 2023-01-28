@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_api/data/models/news_article.dart';
 
 class NewsItem extends StatelessWidget {
-  NewsItem({
-    required this.article,
-  });
+  const NewsItem({Key? key, required this.article}) : super(key: key);
 
   final NewsArticle article;
 
