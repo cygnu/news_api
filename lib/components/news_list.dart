@@ -21,6 +21,7 @@ class NewsList extends StatelessWidget {
 
           return NewsItem(article: articles[index]);
         },
+        childCount: data.length,
       ),
     );
   }

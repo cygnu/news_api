@@ -11,27 +11,18 @@ final mainViewModelProvider =
 );
 
 class MainViewModel extends StateNotifier<AsyncValue<List<NewsInfo>>> {
-  MainViewModel(this._apiRepository)
-      : super(const AsyncLoading<List<NewsInfo>>()) {
+  MainViewModel(this._apiRepository) : super(const AsyncValue.loading()) {
     fetch();
   }
 
   final ApiRepository _apiRepository;
 
   Future<void> fetch({bool isLoadMore = false}) async {
-    state = await AsyncValue.guard(() async {
+    try {
       final data = await _apiRepository.fetch("us", dotenv.env["API_KEY"]!);
-      return [if (isLoadMore) ...state.value ?? [], ...data];
-    });
-  }
-
-  void loadMore() {
-    if (state == const AsyncLoading<List<NewsInfo>>().copyWithPrevious(state)) {
-      return;
+      state = AsyncValue.data(data);
+    } catch (err, stack) {
+      state = AsyncValue.error(err, stack);
     }
-
-    state = const AsyncLoading<List<NewsInfo>>().copyWithPrevious(state);
-
-    fetch(isLoadMore: true);
   }
 }
