@@ -4,8 +4,8 @@ part 'news_article.freezed.dart';
 part 'news_article.g.dart';
 
 @freezed
-class NewsArticle with _$NewsArticle {
-  const factory NewsArticle({
+abstract class NewsArticle with _$NewsArticle {
+  factory NewsArticle({
     String? author,
     required String title,
     required String description,

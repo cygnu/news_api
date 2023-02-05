@@ -5,8 +5,9 @@ part 'news_info.freezed.dart';
 part 'news_info.g.dart';
 
 @freezed
-class NewsInfo with _$NewsInfo {
-  const factory NewsInfo({
+abstract class NewsInfo with _$NewsInfo {
+  factory NewsInfo({
+    String? status,
     required String totalResults,
     required List<NewsArticle> articles,
   }) = _NewsInfo;
