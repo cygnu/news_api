@@ -1,16 +1,15 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:news_api/data/models/news_info.dart';
 import 'package:news_api/data/repository.dart';
 
 final mainViewModelProvider =
-    StateNotifierProvider<MainViewModel, AsyncValue<List<NewsInfo>>>(
+    StateNotifierProvider<MainViewModel, AsyncValue<List<dynamic>>>(
   (ref) => MainViewModel(
     ApiRepository(),
   ),
 );
 
-class MainViewModel extends StateNotifier<AsyncValue<List<NewsInfo>>> {
+class MainViewModel extends StateNotifier<AsyncValue<List<dynamic>>> {
   MainViewModel(this._apiRepository) : super(const AsyncValue.loading()) {
     fetch();
   }

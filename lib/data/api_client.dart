@@ -1,16 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:news_api/data/api_client_data.dart';
-import 'package:news_api/data/models/news_info.dart';
 
 final apiClientProvider =
-    FutureProvider.family.autoDispose<List<NewsInfo>, ApiClientData>(
+    FutureProvider.family.autoDispose<List<dynamic>, ApiClientData>(
   (ref, apiClientData) =>
       ApiClient().getHeadlineNews(apiClientData.country, apiClientData.apiKey),
 );
 
 class ApiClient {
-  Future<List<NewsInfo>> getHeadlineNews(String country, String apiKey) async {
+  Future<List<dynamic>> getHeadlineNews(String country, String apiKey) async {
     final dio = Dio();
     const baseUrl = 'https://newsapi.org/v2/top-headlines';
 
