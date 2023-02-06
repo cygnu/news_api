@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:news_api/components/news_item.dart';
 import 'package:news_api/data/models/news_article.dart';
+import 'package:news_api/data/models/news_info.dart';
 
 class NewsList extends StatelessWidget {
   const NewsList({Key? key, required this.data}) : super(key: key);
 
-  final List<dynamic> data;
+  final NewsInfo data;
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +15,15 @@ class NewsList extends StatelessWidget {
         (BuildContext context, int index) {
           List<NewsArticle> articles = [];
 
-          for (int i = 0; i < data.length; i++) {
-            articles.addAll(data[index].articles);
+          print(data.toString());
+
+          for (int i = 0; i < int.parse(data.totalResults); i++) {
+            articles.addAll(data.articles);
           }
 
           return NewsItem(article: articles[index]);
         },
-        childCount: data.length,
+        childCount: int.parse(data.totalResults),
       ),
     );
   }

@@ -1,15 +1,18 @@
+import 'dart:convert' as convert;
+
 import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:news_api/data/api_client_data.dart';
+import 'package:news_api/data/models/news_info.dart';
 
 final apiClientProvider =
-    FutureProvider.family.autoDispose<List<dynamic>, ApiClientData>(
+    FutureProvider.family.autoDispose<NewsInfo, ApiClientData>(
   (ref, apiClientData) =>
       ApiClient().getHeadlineNews(apiClientData.country, apiClientData.apiKey),
 );
 
 class ApiClient {
-  Future<List<dynamic>> getHeadlineNews(String country, String apiKey) async {
+  Future<NewsInfo> getHeadlineNews(String country, String apiKey) async {
     final dio = Dio();
     const baseUrl = 'https://newsapi.org/v2/top-headlines';
 
@@ -17,17 +20,12 @@ class ApiClient {
 
     if (response.statusCode == 200) {
       try {
-        Map<String, dynamic> map = response.data;
-
-        final data = map.entries.map((e) => e.value).toList();
-        print(data.toString());
-        return data;
+        return NewsInfo.fromJson(convert.jsonDecode(response.data));
       } catch (e) {
         throw e;
       }
     } else {
-      print('Request failed with status: ${response.statusCode}');
-      return [];
+      throw ('Request failed with status: ${response.statusCode}');
     }
   }
 }
