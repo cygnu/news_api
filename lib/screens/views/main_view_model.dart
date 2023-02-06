@@ -17,8 +17,10 @@ class MainViewModel extends StateNotifier<AsyncValue<List<NewsInfo>>> {
 
   final ApiRepository _apiRepository;
 
-  Future<void> fetch({bool isLoadMore = false}) async {
+  Future<void> fetch() async {
+    state = AsyncValue.loading();
     try {
+      // await dotenv.load(fileName: ".env");
       final data = await _apiRepository.fetch("us", dotenv.env["API_KEY"]!);
       state = AsyncValue.data(data);
     } catch (err, stack) {
