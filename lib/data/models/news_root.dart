@@ -4,14 +4,14 @@ import 'package:news_api/data/models/news_article.dart';
 part 'news_root.freezed.dart';
 part 'news_root.g.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 abstract class NewsRoot with _$NewsRoot {
   const factory NewsRoot({
     String? status,
-    required String totalResults,
-    required List<NewsArticle> articles,
+    int? totalResults,
+    List<NewsArticle>? articles,
   }) = _NewsInfo;
 
-  factory NewsRoot.fromJson(Map<String, dynamic> json) =>
+  factory NewsRoot.fromJson(Map<String, Object?> json) =>
       _$NewsRootFromJson(json);
 }
