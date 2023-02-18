@@ -15,8 +15,8 @@ class NewsPageBody extends HookConsumerWidget {
       child: CustomScrollView(
         slivers: [
           asyncValue.when(
-            data: (NewsRoot data) {
-              return NewsList(data: data);
+            data: (data) {
+              return NewsList(articles: data.articles!);
             },
             error: (Object error, StackTrace stackTrace) {
               return SliverPadding(

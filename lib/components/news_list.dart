@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:news_api/components/news_item.dart';
 import 'package:news_api/data/models/news_article.dart';
-import 'package:news_api/data/models/news_root.dart';
 
 class NewsList extends StatelessWidget {
-  const NewsList({Key? key, required this.data}) : super(key: key);
+  const NewsList({Key? key, required this.articles}) : super(key: key);
 
-  final NewsRoot data;
+  final List<NewsArticle> articles;
 
   @override
   Widget build(BuildContext context) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
-          List<NewsArticle> articles = [];
+          List<NewsArticle> article = [];
 
-          print(data.toString());
-
-          for (int i = 0; i < int.parse(data.totalResults); i++) {
-            articles.addAll(data.articles);
+          for (int i = 0; i < articles.length; i++) {
+            article.add(articles[i]);
           }
-
-          return NewsItem(article: articles[index]);
+          return NewsItem(article: article[index]);
         },
-        childCount: int.parse(data.totalResults),
+        childCount: articles.length,
       ),
     );
   }

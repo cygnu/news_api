@@ -1,5 +1,3 @@
-import 'dart:convert' as convert;
-
 import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:news_api/data/api_client_data.dart';
@@ -16,11 +14,13 @@ class ApiClient {
     final dio = Dio();
     const baseUrl = 'https://newsapi.org/v2/top-headlines';
 
-    final response = await dio.get('$baseUrl?country=$country&apiKey=$apiKey');
+    Response response =
+        await dio.get('$baseUrl?country=$country&apiKey=$apiKey');
 
     if (response.statusCode == 200) {
       try {
-        return NewsRoot.fromJson(convert.jsonDecode(response.data));
+        NewsRoot data = NewsRoot.fromJson(response.data);
+        return data;
       } catch (e) {
         throw e;
       }
