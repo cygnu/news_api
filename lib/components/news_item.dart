@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_api/data/models/news_article.dart';
+import 'package:news_api/screens/details_screen.dart';
 
 class NewsItem extends StatelessWidget {
   const NewsItem({Key? key, required this.article}) : super(key: key);
@@ -13,7 +14,13 @@ class NewsItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DetailsScreen(article: article)),
+              );
+            },
             child: Image.network(article.urlToImage!),
           ),
           Padding(
