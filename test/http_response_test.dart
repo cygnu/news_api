@@ -16,7 +16,7 @@ void main() {
     await dotenv.load(fileName: ".env");
     _server.enqueue(httpCode: 200);
     final res = await apiClient.getHeadlineNews("us", dotenv.env['API_KEY']!);
-    expect(res, {});
+    expect(res.status, "ok");
   });
 
   tearDown(_server.shutdown);
