@@ -16,7 +16,7 @@ class NewsPageBody extends HookConsumerWidget {
         slivers: [
           asyncValue.when(
             data: (data) {
-              return NewsList(articles: data.articles!);
+              return NewsList(articles: data.articles ?? []);
             },
             error: (Object error, StackTrace stackTrace) {
               return SliverPadding(

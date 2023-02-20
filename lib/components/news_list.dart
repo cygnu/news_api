@@ -12,11 +12,14 @@ class NewsList extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
-          List<NewsArticle> article = [];
-
-          for (int i = 0; i < articles.length; i++) {
-            article.add(articles[i]);
+          if (articles.isEmpty) {
+            return Text('😢');
           }
+
+          List<NewsArticle> article = [
+            for (int i = 0; i < articles.length; i++) articles[i]
+          ];
+
           return NewsItem(article: article[index]);
         },
         childCount: articles.length,
