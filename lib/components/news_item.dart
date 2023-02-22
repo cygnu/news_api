@@ -31,7 +31,7 @@ class NewsItem extends StatelessWidget {
               maxLines: 3,
               style: TextStyle(
                 fontSize: 18.0,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w700,
               ),
             ),
           ),

@@ -15,9 +15,41 @@ class DetailsScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(article.title!),
-              Text(article.content!),
+              Text(
+                article.title!,
+                style: TextStyle(
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              Text(
+                article.content!,
+                style: TextStyle(
+                  fontSize: 18.0,
+                ),
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              Text(
+                "Author: ${article.author}",
+                style: TextStyle(
+                  fontSize: 14.0,
+                ),
+                textAlign: TextAlign.right,
+              ),
+              Text(
+                "Source: ${article.source?.name}",
+                style: TextStyle(
+                  fontSize: 14.0,
+                ),
+                textAlign: TextAlign.right,
+              ),
             ],
           ),
         ),
