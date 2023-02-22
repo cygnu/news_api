@@ -13,7 +13,7 @@ abstract class NewsArticle with _$NewsArticle {
     String? description,
     String? url,
     String? urlToImage,
-    String? publishAt,
+    String? publishedAt,
     String? content,
   }) = _NewsArticle;
 

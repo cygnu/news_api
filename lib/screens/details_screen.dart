@@ -25,7 +25,17 @@ class DetailsScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 16.0,
+                height: 8.0,
+              ),
+              Text(
+                "Published At: ${article.publishedAt}",
+                style: TextStyle(
+                  fontSize: 14.0,
+                ),
+                textAlign: TextAlign.right,
+              ),
+              SizedBox(
+                height: 8.0,
               ),
               Text(
                 article.content!,
